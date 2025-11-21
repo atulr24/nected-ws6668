@@ -3,7 +3,7 @@
  "category": "decisionTable",
  "data": {
   "createdAt": "2025-11-21T05:56:38.79Z",
-  "updatedAt": "2025-11-21T06:19:53.8327Z",
+  "updatedAt": "2025-11-21T06:31:35.823051Z",
   "isDeleted": false,
   "testedAt": "0001-01-01T00:00:00Z",
   "publishedAt": "0001-01-01T00:00:00Z",
@@ -21,24 +21,77 @@
    "rows": {
     "rule_01": {
      "nextId": "g_xbOBJR",
+     "firstOutputData": "output_dn9jnB",
      "isEnabled": true
     },
     "g_xbOBJR": {
      "prevId": "rule_01",
+     "firstOutputData": "output_1H4jpX",
      "isEnabled": true
     }
    },
    "properties": {
     "rule_03": {
+     "nextId": "param_YaQm7z",
+     "type": "simpleCondition"
+    },
+    "param_YaQm7z": {
+     "prevId": "rule_03",
      "type": "simpleCondition"
     }
    },
+   "results": {
+    "result_rd7Fwk": {
+     "dataType": "string",
+     "keyName": "keyName"
+    }
+   },
    "firstRow": "rule_01",
-   "firstProperty": "rule_03"
+   "firstProperty": "rule_03",
+   "firstResult": "result_rd7Fwk"
   },
   "action": {
    "then": {
-    
+    "outputData": {
+     "output_1H4jpX": {
+      "name": "keyName",
+      "dataType": "string",
+      "value": "Value",
+      "executedValue": "Value"
+     },
+     "output_dn9jnB": {
+      "name": "keyName",
+      "dataType": "string",
+      "value": "Value",
+      "executedValue": "Value"
+     }
+    },
+    "actionNode": {
+     "actionData_action_1": {
+      "name": "action_1",
+      "connectorId": "99238be0-56ae-4650-8bd5-a280d5ad89bd",
+      "entity": "",
+      "entityId": "",
+      "config": {
+       "method": "GET",
+       "headers": [],
+       "settings": {
+        "cache": {
+         "enabled": false,
+         "duration": {
+          "unit": "d",
+          "value": 0
+         },
+         "cacheKeys": ""
+        }
+       },
+       "queryParams": [],
+       "path": "{{.globalVar.secretName}}",
+       "query": ""
+      }
+     }
+    },
+    "firstActionNode": "actionData_action_1"
    },
    "else": {
     
@@ -46,11 +99,28 @@
   },
   "conditions": {
    "nodes": {
+    "g_xbOBJR": {
+     "operator": "and",
+     "nodeType": "group",
+     "children": [
+      "c_mpwXvk",
+      "c_Zi0Fwu"
+     ],
+     "siblingIndex": 1
+    },
+    "param_YaQm7z": {
+     "sourceType": "systemVar",
+     "dataType": "string",
+     "nodeType": "params",
+     "attribute": "EntityId",
+     "siblingIndex": 1
+    },
     "rule_01": {
      "operator": "and",
      "nodeType": "group",
      "children": [
-      "rule_02"
+      "rule_02",
+      "c_iB3se8"
      ],
      "siblingIndex": 1
     },
@@ -73,6 +143,28 @@
      "attribute": "sql",
      "siblingIndex": 1
     },
+    "c_Zi0Fwu": {
+     "value": "",
+     "operator": "any",
+     "dataType": "string",
+     "nodeType": "condition",
+     "parent": "g_xbOBJR",
+     "leftNode": [
+      "param_YaQm7z"
+     ],
+     "siblingIndex": 1
+    },
+    "c_iB3se8": {
+     "value": "",
+     "operator": "ex",
+     "dataType": "string",
+     "nodeType": "condition",
+     "parent": "rule_01",
+     "leftNode": [
+      "param_YaQm7z"
+     ],
+     "siblingIndex": 1
+    },
     "c_mpwXvk": {
      "name": "Any",
      "operator": "1===1",
@@ -82,14 +174,6 @@
      "parent": "g_xbOBJR",
      "leftNode": [
       "rule_03"
-     ],
-     "siblingIndex": 1
-    },
-    "g_xbOBJR": {
-     "operator": "and",
-     "nodeType": "group",
-     "children": [
-      "c_mpwXvk"
      ],
      "siblingIndex": 1
     }
@@ -121,5 +205,33 @@
   },
   "isDemo": false,
   "schemaVersion": "0.1.1"
- }
+ },
+ "dependencies": [
+  {
+   "entityCommitId": "commit-d8ba1f46-f2d4-4df4-a5db-fb7b40e1fb50",
+   "entityType": "rule",
+   "entityId": "38c72240-3f3f-4bdd-b758-8c3d5e95db01",
+   "entityVersion": "draft",
+   "entityNodeId": "secretName",
+   "dependencyType": "variable",
+   "dependencyId": "7eb1e9f4-a63a-4fb6-b0da-65cc42b4044b",
+   "dependencyVersion": "live",
+   "isDeleted": false,
+   "createdAt": "2025-11-21T06:31:35.841617Z",
+   "updatedAt": "2025-11-21T06:31:35.841617Z"
+  },
+  {
+   "entityCommitId": "commit-d8ba1f46-f2d4-4df4-a5db-fb7b40e1fb50",
+   "entityType": "rule",
+   "entityId": "38c72240-3f3f-4bdd-b758-8c3d5e95db01",
+   "entityVersion": "draft",
+   "entityNodeId": "then-actionData_action_1",
+   "dependencyType": "connector",
+   "dependencyId": "99238be0-56ae-4650-8bd5-a280d5ad89bd",
+   "dependencyVersion": "live",
+   "isDeleted": false,
+   "createdAt": "2025-11-21T06:31:24.703299Z",
+   "updatedAt": "2025-11-21T06:31:35.840862Z"
+  }
+ ]
 }
