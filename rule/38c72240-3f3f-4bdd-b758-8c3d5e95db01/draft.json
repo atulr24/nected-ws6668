@@ -3,7 +3,7 @@
  "category": "decisionTable",
  "data": {
   "createdAt": "2025-11-21T05:56:38.79Z",
-  "updatedAt": "2025-11-21T05:56:41.816375Z",
+  "updatedAt": "2025-11-21T06:19:53.8327Z",
   "isDeleted": false,
   "testedAt": "0001-01-01T00:00:00Z",
   "publishedAt": "0001-01-01T00:00:00Z",
@@ -20,6 +20,11 @@
   "decisionTable": {
    "rows": {
     "rule_01": {
+     "nextId": "g_xbOBJR",
+     "isEnabled": true
+    },
+    "g_xbOBJR": {
+     "prevId": "rule_01",
      "isEnabled": true
     }
    },
@@ -41,13 +46,6 @@
   },
   "conditions": {
    "nodes": {
-    "rule_03": {
-     "sourceType": "custom",
-     "dataType": "jsCondition",
-     "nodeType": "params",
-     "attribute": "sql",
-     "siblingIndex": 1
-    },
     "rule_01": {
      "operator": "and",
      "nodeType": "group",
@@ -65,6 +63,33 @@
      "parent": "rule_01",
      "leftNode": [
       "rule_03"
+     ],
+     "siblingIndex": 1
+    },
+    "rule_03": {
+     "sourceType": "custom",
+     "dataType": "jsCondition",
+     "nodeType": "params",
+     "attribute": "sql",
+     "siblingIndex": 1
+    },
+    "c_mpwXvk": {
+     "name": "Any",
+     "operator": "1===1",
+     "dataType": "jsCondition",
+     "nodeType": "jsCondition",
+     "query": "1===1",
+     "parent": "g_xbOBJR",
+     "leftNode": [
+      "rule_03"
+     ],
+     "siblingIndex": 1
+    },
+    "g_xbOBJR": {
+     "operator": "and",
+     "nodeType": "group",
+     "children": [
+      "c_mpwXvk"
      ],
      "siblingIndex": 1
     }
